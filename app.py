@@ -143,7 +143,6 @@ def _get_sidebar_selection(
     selected = st.sidebar.multiselect(
         label=label,
         options=options,
-        default=st.session_state[key],
         key=key,
     )
     return options, selected
@@ -182,7 +181,6 @@ def _apply_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     sel_engagement = st.sidebar.multiselect(
         label="Engagement Status",
         options=engagement_options,
-        default=st.session_state["flt_engagement"],
         key="flt_engagement",
     )
 
