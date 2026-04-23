@@ -31,6 +31,26 @@ def _format_metric(value: float) -> str:
     return f"{value:.2f}%"
 
 
+# Derived columns that must always be treated as categorical in dropdowns.
+_DERIVED_CATEGORICAL = {"AgeGroup", "CreditScoreBand", "TenureGroup", "BalanceSegment", "Risk"}
+
+
+def _classify_columns(df: pd.DataFrame) -> tuple[list[str], list[str]]:
+    """Return (categorical_cols, numeric_cols) for interactive controls.
+
+    Uses dtype checks *and* an explicit allowlist so derived columns are
+    always available regardless of pandas version or serialisation path.
+    """
+    categorical_cols = [
+        c for c in df.columns
+        if df[c].dtype == "object"
+        or isinstance(df[c].dtype, pd.CategoricalDtype)
+        or c in _DERIVED_CATEGORICAL
+    ]
+    numeric_cols = df.select_dtypes(include="number").columns.tolist()
+    return categorical_cols, numeric_cols
+
+
 def _inject_custom_css() -> None:
     """Apply a modern, dark SaaS-style visual theme."""
     st.markdown(
@@ -412,10 +432,7 @@ def _render_visual_builder_tab(filtered_df: pd.DataFrame) -> None:
         unsafe_allow_html=True,
     )
 
-    categorical_cols = [
-        c for c in filtered_df.columns if filtered_df[c].dtype == "object" or "Group" in c or "Band" in c
-    ]
-    numeric_cols = filtered_df.select_dtypes(include="number").columns.tolist()
+    categorical_cols, numeric_cols = _classify_columns(filtered_df)
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
@@ -473,10 +490,7 @@ def _render_visual_builder_tab(filtered_df: pd.DataFrame) -> None:
 def _render_advanced_analysis_tab(filtered_df: pd.DataFrame) -> None:
     """Dynamic multi-dimension analysis with configurable axes."""
     st.markdown('<div class="section-title">Advanced Analysis</div>', unsafe_allow_html=True)
-    categorical_cols = [
-        c for c in filtered_df.columns if filtered_df[c].dtype == "object" or "Group" in c or "Band" in c
-    ]
-    numeric_cols = filtered_df.select_dtypes(include="number").columns.tolist()
+    categorical_cols, numeric_cols = _classify_columns(filtered_df)
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:

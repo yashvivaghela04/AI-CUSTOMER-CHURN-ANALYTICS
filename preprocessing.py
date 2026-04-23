@@ -38,21 +38,21 @@ def create_features(df: pd.DataFrame) -> pd.DataFrame:
             featured_df["Age"],
             bins=[float("-inf"), 29, 45, 60, float("inf")],
             labels=["Young", "Mid-Age", "Senior", "Elder"],
-        )
+        ).astype(str)
 
     if "CreditScore" in featured_df.columns:
         featured_df["CreditScoreBand"] = pd.cut(
             featured_df["CreditScore"],
             bins=[float("-inf"), 499, 700, float("inf")],
             labels=["Low", "Medium", "High"],
-        )
+        ).astype(str)
 
     if "Tenure" in featured_df.columns:
         featured_df["TenureGroup"] = pd.cut(
             featured_df["Tenure"],
             bins=[float("-inf"), 2, 7, float("inf")],
             labels=["New", "Mid", "Long"],
-        )
+        ).astype(str)
 
     if "Balance" in featured_df.columns:
         balance = featured_df["Balance"]
