@@ -420,7 +420,7 @@ def _prepare_aggregated_data(
     return grouped, y_label
 
 
-def _render_visual_builder_tab(filtered_df: pd.DataFrame) -> None:
+def _render_visual_builder_tab(processed_df: pd.DataFrame, filtered_df: pd.DataFrame) -> None:
     """Full interactive visualization builder."""
     st.markdown('<div class="section-title">Visualization Builder</div>', unsafe_allow_html=True)
     st.markdown(
@@ -430,7 +430,7 @@ def _render_visual_builder_tab(filtered_df: pd.DataFrame) -> None:
         unsafe_allow_html=True,
     )
 
-    categorical_cols, numeric_cols = _classify_columns(filtered_df)
+    categorical_cols, numeric_cols = _classify_columns(processed_df)
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
@@ -491,10 +491,10 @@ def _render_visual_builder_tab(filtered_df: pd.DataFrame) -> None:
     st.plotly_chart(fig, use_container_width=True)
 
 
-def _render_advanced_analysis_tab(filtered_df: pd.DataFrame) -> None:
+def _render_advanced_analysis_tab(processed_df: pd.DataFrame, filtered_df: pd.DataFrame) -> None:
     """Dynamic multi-dimension analysis with configurable axes."""
     st.markdown('<div class="section-title">Advanced Analysis</div>', unsafe_allow_html=True)
-    categorical_cols, numeric_cols = _classify_columns(filtered_df)
+    categorical_cols, numeric_cols = _classify_columns(processed_df)
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
@@ -679,9 +679,9 @@ def main() -> None:
     with tab_overview:
         _render_overview_tab(filtered_df)
     with tab_builder:
-        _render_visual_builder_tab(filtered_df)
+        _render_visual_builder_tab(processed_df, filtered_df)
     with tab_advanced:
-        _render_advanced_analysis_tab(filtered_df)
+        _render_advanced_analysis_tab(processed_df, filtered_df)
     with tab_story:
         _render_story_tab(filtered_df)
 
