@@ -408,11 +408,22 @@ def _render_visual_builder_tab(filtered_df: pd.DataFrame) -> None:
         "</div>",
         unsafe_allow_html=True,
     )
+    exclude_cols = ["CustomerId", "Surname", "Exited"]
 
     categorical_cols = [
-        c for c in filtered_df.columns if filtered_df[c].dtype == "object" or "Group" in c or "Band" in c
+        col for col in processed_df.columns
+        if col not in exclude_cols and (
+            processed_df[col].dtype == "object"
+            or "Group" in col
+            or "Segment" in col
+            or "Band" in col
+        )
     ]
-    numeric_cols = filtered_df.select_dtypes(include="number").columns.tolist()
+
+    numeric_cols = [
+        col for col in processed_df.columns
+        if col not in exclude_cols and processed_df[col].dtype != "object"
+    ]
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
