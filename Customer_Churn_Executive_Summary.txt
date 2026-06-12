@@ -1,0 +1,56 @@
+TITLE: Executive Summary — AI-Driven Customer Churn Analytics
+AUTHOR: Yashvi Chunilal Vaghela
+DATE: June 12, 2026
+
+========================================================================
+SECTION 1 - BUSINESS CONTEXT
+========================================================================
+European retail banks face sustained pressure to retain customers amid competitive product offerings and digital-first alternatives. Customer churn erodes deposit balances, reduces fee income, and increases the cost of replacement acquisition. This executive summary distills data-driven insights from 10,000 customer records to guide immediate and strategic retention decisions.
+
+========================================================================
+SECTION 2 - KEY METRICS
+========================================================================
+  - Total Customers Analyzed: 10,000
+  - Overall Churn Rate: 20.37%
+  - Retention Rate: 79.63%
+  - High-Value Customer Churn (Balance >= 50,000): 23.95% (6,308 customers)
+  - Active Member Churn: 14.27%
+  - Inactive Member Churn: 26.85%
+  - High Risk Portfolio Share: 30.70% (3,070 customers)
+
+========================================================================
+SECTION 3 - CRITICAL FINDINGS
+========================================================================
+  * Portfolio-wide churn stands at 20.37%, meaning roughly one in five customers has exited.
+  * Germany is the highest-churn geography at 32.44%.
+  * The Senior segment leads age-based attrition at 51.12%.
+  * Inactive customers churn at 26.85%, exceeding active customers by 12.58%.
+  * High-value accounts (>= EUR 50,000 balance) churn at 23.95%, representing material revenue at risk.
+
+========================================================================
+SECTION 4 - HIGH RISK SEGMENTS
+========================================================================
+  * High Risk flag (Balance > 50,000 & Inactive): 31.40% churn across 3,070 customers (30.70% of portfolio)
+  * Highest geography — Germany: 32.44% (2,509 customers)
+  * Highest age group — Senior: 51.12% (1,647 customers)
+  * Highest balance segment — Low: 34.67% (75 customers)
+  * Inactive members: 26.85% churn vs 14.27% for active members
+
+========================================================================
+SECTION 5 - IMMEDIATE ACTION ITEMS
+========================================================================
+  1. Assign relationship managers to the 3,070 High Risk customers flagged by balance and inactivity.
+  2. Launch a 30-day win-back campaign in Germany targeting the top churn geography.
+  3. Activate dormant accounts through personalized digital engagement and fee-relief incentives for inactive members.
+
+========================================================================
+SECTION 6 - STRATEGIC RECOMMENDATIONS
+========================================================================
+  1. Embed churn KPIs and Risk flags into CRM dashboards for weekly executive review and branch-level accountability.
+  2. Develop segment-specific loyalty programs aligned to age cohorts and credit score bands with measurable retention targets.
+  3. Establish a high-value customer protection program combining proactive outreach, advisory services, and escalation protocols.
+
+========================================================================
+SECTION 7 - EXPECTED IMPACT
+========================================================================
+Targeting the highest-churn geography (Germany) and inactive member gap (12.58% above active baseline) can materially reduce portfolio churn from the current 20.37% baseline. Protecting 6,308 high-value accounts should stabilize core deposit revenue while re-engagement programs convert disengaged customers into active, lower-risk relationships.

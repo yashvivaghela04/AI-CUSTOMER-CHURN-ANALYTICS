@@ -1,0 +1,102 @@
+TITLE: AI-Driven Customer Churn Analysis and Retention Strategy
+AUTHOR: Yashvi Chunilal Vaghela
+DATE: June 12, 2026
+
+========================================================================
+SECTION 1 - ABSTRACT
+========================================================================
+Customer churn remains a critical challenge for European retail banks, directly affecting revenue stability and long-term profitability. This study applies an AI-assisted analytics framework to a dataset of 10,000 bank customers to quantify churn patterns across demographic, geographic, and financial dimensions. Using data cleaning, feature engineering, and segmentation analysis, we identify high-risk cohorts and engagement-driven churn differentials. The overall churn rate is 20.37%, with notable variation across regions and customer segments. Findings support targeted retention strategies that prioritize inactive, high-balance customers in the highest-churn geographies.
+
+========================================================================
+SECTION 2 - INTRODUCTION
+========================================================================
+Customer attrition in banking erodes deposit bases, increases acquisition costs, and weakens cross-selling opportunities. Banks operating across European markets face heterogeneous customer behaviors shaped by geography, product usage, credit profiles, and engagement levels. Predicting and preventing churn therefore requires structured segmentation rather than one-size-fits-all retention campaigns.
+
+The primary objectives of this research are to (1) characterize the bank customer dataset and engineered segmentation features, (2) measure churn rates across key customer dimensions, (3) identify high-risk segments including high-value and inactive accounts, and (4) translate analytical findings into actionable retention recommendations. An interactive dashboard companion tool enables stakeholders to explore these insights dynamically.
+
+========================================================================
+SECTION 3 - DATASET DESCRIPTION
+========================================================================
+The dataset contains 10,000 customer records and 14 columns:
+
+  - Year: Calendar year associated with the customer record.
+  - CustomerId: Unique identifier for each customer.
+  - Surname: Customer surname (removed during preprocessing as non-analytical).
+  - CreditScore: Numeric creditworthiness score assigned to the customer.
+  - Geography: Country of residence (France, Germany, or Spain).
+  - Gender: Customer gender (Male or Female).
+  - Age: Customer age in years.
+  - Tenure: Number of years the customer has been with the bank.
+  - Balance: Account balance held at the bank.
+  - NumOfProducts: Count of bank products used by the customer.
+  - HasCrCard: Binary indicator (1/0) of credit card ownership.
+  - IsActiveMember: Binary indicator (1/0) of active membership status.
+  - EstimatedSalary: Estimated annual salary of the customer.
+  - Exited: Binary target variable (1 = churned, 0 = retained).
+
+========================================================================
+SECTION 4 - METHODOLOGY
+========================================================================
+Data cleaning removed non-analytical identifiers (Surname), imputed missing numeric values with column medians and categorical values with modes, and validated binary target fields. Feature engineering created five segmentation attributes: AgeGroup (Young, Mid-Age, Senior, Elder), CreditScoreBand (Low, Medium, High), TenureGroup (New, Mid, Long), BalanceSegment (Zero, Low, High), and Risk (High Risk when Balance > 50,000 and IsActiveMember = 0; otherwise Normal). Churn KPIs were computed as the percentage of customers with Exited = 1 within each segment.
+
+========================================================================
+SECTION 5 - EDA
+========================================================================
+Overall Churn Rate: 20.37%
+
+Churn by Geography:
+  - Germany: 32.44% (2,509 customers)
+  - Spain: 16.67% (2,477 customers)
+  - France: 16.15% (5,014 customers)
+
+Churn by Age Group:
+  - Senior: 51.12% (1,647 customers)
+  - Elder: 24.78% (464 customers)
+  - Mid-Age: 15.30% (6,248 customers)
+  - Young: 7.56% (1,641 customers)
+
+Churn by Gender:
+  - Female: 25.07% (4,543 customers)
+  - Male: 16.46% (5,457 customers)
+
+High-Value Customer Churn (Balance >= 50,000):
+  - Churn Rate: 23.95%
+  - Customer Count: 6,308
+
+Active vs Inactive Member Churn:
+  - Active: 14.27%
+  - Inactive: 26.85%
+  - Gap (Inactive minus Active): 12.58%
+
+========================================================================
+SECTION 6 - KEY FINDINGS
+========================================================================
+  * The overall customer churn rate across the portfolio is 20.37%, establishing the baseline retention challenge.
+  * Germany exhibits the highest geographic churn at 32.44%, compared with France at 16.15%.
+  * The Senior age cohort shows the highest churn (51.12%), indicating demographic concentration of attrition risk.
+  * Inactive members churn at 26.85%, which is 12.58% higher than active members (14.27%).
+  * High-value customers (balance >= EUR 50,000) represent 6,308 accounts with a churn rate of 23.95%, and 30.70% of all customers are classified as High Risk.
+
+========================================================================
+SECTION 7 - RECOMMENDATIONS
+========================================================================
+  1. Deploy geography-specific retention programs in the highest-churn region, combining localized offers and relationship-manager outreach.
+  2. Launch re-engagement campaigns targeting inactive members with personalized product bundles and digital banking incentives.
+  3. Implement proactive monitoring and white-glove service for high-balance accounts to protect revenue concentration.
+  4. Design age-tailored communication for the highest-churn age cohort, emphasizing loyalty benefits and financial advisory support.
+  5. Integrate the Risk segmentation flag into CRM workflows so relationship teams prioritize High Risk customers before exit events.
+
+========================================================================
+SECTION 8 - CONCLUSION
+========================================================================
+This analysis of 10,000 European bank customers demonstrates that churn is not uniformly distributed: overall attrition stands at 20.37%, with meaningful spread across geography, age, gender, and engagement status. Inactive customers and high-balance segments warrant disproportionate retention investment because disengagement amplifies financial exposure.
+
+The combination of engineered segmentation features and KPI-driven reporting provides a reproducible foundation for both strategic planning and operational intervention. Future work may extend this framework with predictive machine learning models and A/B testing of retention campaigns to quantify uplift.
+
+========================================================================
+SECTION 9 - REFERENCES
+========================================================================
+  [1] Kaggle. Bank Customer Churn Modelling Dataset.
+  [2] Verbeke, W., Martens, D., & Baesens, B. (2014). Social network analysis for customer churn prediction.
+  [3] Neslin, S. A., & Van Heerde, H. J. (2022). Customer Retention Models and Strategies.
+  [4] Streamlit Inc. Streamlit Documentation — Interactive Data Applications.
